@@ -6,7 +6,7 @@ A model works out **once** how to do a task inside a legacy back-office applicat
 What it learned is saved as a typed, reviewable **capability artifact**.
 From then on an AI agent invokes that capability through **deterministic replay** — no model in the loop — and gets back a structured result. When the system cannot safely continue, a **human operator takes control of the same live session** and hands it back.
 
-Written in Go. The requirements and their traceability are in [docs/SPEC.md](docs/SPEC.md); the design write-up is in [REPORT.md](REPORT.md); recorded runs are in [evidence/](evidence/); a four-minute screen recording of the demo path below is at [docs/demo.mp4](docs/demo.mp4), and the operator console in use at [docs/console.mp4](docs/console.mp4).
+Written in Go. The requirements and their traceability are in [docs/SPEC.md](docs/SPEC.md); the design write-up is in [REPORT.md](REPORT.md); recorded runs are in [evidence/](evidence/); recordings of the demo path and of the operator console are embedded below (MP4 versions in [docs/](docs/)).
 
 ```mermaid
 flowchart LR
@@ -72,7 +72,9 @@ Both feed the same agent loop with the same prompt and schema; the evidence was 
 
 ## Demo path
 
-Screen recordings of exactly what follows: **[docs/demo.mp4](docs/demo.mp4)** (4 min: build, discovery, review, replays, injected faults, a hard failure, the handoff driven from the command line, the second tenant) and **[docs/console.mp4](docs/console.mp4)** (26 s: the same handoff done through the operator console).
+Exactly what follows, recorded (4 min: build, discovery, review, replays, injected faults, a hard failure, the handoff driven from the command line, the second tenant). Video version: [docs/demo.mp4](docs/demo.mp4).
+
+![Terminal recording of the demo path](docs/demo.gif)
 
 ```bash
 # 1. Discover: give the goal in plain language; the model drives the live application
@@ -308,7 +310,9 @@ stateDiagram-v2
 
 ![The operator console during a handoff: the intervention request on the left, the live session on the right](docs/operator-console.png)
 
-[docs/console.mp4](docs/console.mp4) shows this console being used for the handoff below: take control, enter the override code on the live view, hand back, then approve the committing step (`cmd/consolerec` drives the page and records it).
+The console in use for the handoff below — take control, enter the override code on the live view, hand back, then approve the committing step (`cmd/consolerec` drives the page and records it; video version: [docs/console.mp4](docs/console.mp4)):
+
+![Recording of the operator console during a handoff](docs/console.gif)
 
 At most one party holds the session at a time (while a request is pending, nobody does); every action is checked against the holder, and every transfer is logged with an incrementing epoch. The timeout applies only while nobody has claimed; an operator who has taken the session keeps it until they hand it back. While a human holds it, they drive the *same* browser session through the console (click on the live view, type, press keys); what they do is recorded (element clicked, number of characters typed — never the text).
 
@@ -401,7 +405,7 @@ internal/llm/            model backends
 internal/legacybank/     the simulated legacy application
 internal/e2e/            end-to-end tests
 profiles/ tenants/ goals/ artifacts/ evidence/ scripts/
-docs/                    SPEC.md, demo recording (demo.mp4 from demo.tape via vhs), console recording and screenshot
+docs/                    SPEC.md, demo recording (demo.gif/.mp4 from demo.tape via vhs), console recording (console.gif/.mp4) and screenshot
 cmd/consolerec/          records the console recording; not part of the product
 ```
 
