@@ -1,0 +1,10 @@
+{
+  "id": "lakeshore-unmapped",
+  "name": "Lakeshore Federal Credit Union (binding with no label overrides: demonstrates drift detection)",
+  "profile": "meridian-core",
+  "base_url": "http://127.0.0.1:8081",
+  "secrets": {
+    "operator_id": {"env": "LAKESHORE_OPERATOR_ID"},
+    "operator_password": {"env": "LAKESHORE_OPERATOR_PASSWORD"}
+  }
+}

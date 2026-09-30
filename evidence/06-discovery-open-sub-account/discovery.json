@@ -1,0 +1,29 @@
+{
+  "status": "success",
+  "capability": "member.open_sub_account",
+  "artifact": "artifacts/member.open_sub_account.json",
+  "turns": 17,
+  "steps_recorded": 15,
+  "backend": "claude-cli",
+  "model": "claude-opus-5-5",
+  "input_tokens": 51310,
+  "output_tokens": 4000,
+  "cost_usd": 0.09039120000000002,
+  "outputs": {
+    "confirmation_number": "MC-481201",
+    "new_suffix": "0004"
+  },
+  "handoffs": [
+    {
+      "kind": "approval",
+      "reason": "irreversible action: click on button \"Confirm\"",
+      "resolution": "approve",
+      "operator": "dana.ops",
+      "note": "sandbox tenant; details on the review screen match the request"
+    }
+  ],
+  "human_assisted": false,
+  "duration_ms": 82507,
+  "run_id": "20260930T211719-discover-ccb26c",
+  "evidence": "evidence/06-discovery-open-sub-account"
+}

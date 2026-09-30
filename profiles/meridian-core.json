@@ -1,0 +1,90 @@
+{
+  "id": "meridian-core",
+  "version": "1",
+  "product": "MeridianCore Teller Workstation",
+  "description": "Legacy core-banking teller application: frameset, table layout, no ids. Shared by every tenant running the product.",
+  "fingerprint": {
+    "text": "MeridianCore Teller Workstation",
+    "frame": "banner"
+  },
+  "policy": {
+    "allowed_paths": [
+      "/",
+      "/banner",
+      "/nav",
+      "/home",
+      "/signon",
+      "/inquiry",
+      "/inquiry/search",
+      "/member",
+      "/subaccount/*",
+      "/favicon.ico"
+    ],
+    "allowed_actions": ["click", "type", "select", "extract"],
+    "irreversible_controls": ["(?i)^(confirm|post|submit|delete|close account|transfer)\\b"],
+    "irreversible_requests": ["POST /subaccount/confirm"]
+  },
+  "states": [
+    {
+      "id": "system_notice",
+      "class": "recoverable",
+      "description": "An informational interstitial is shown in place of the requested screen.",
+      "when": {"text": "System Notice", "frame": "main"},
+      "recover": {
+        "action": "dismiss",
+        "target": {"frame": "main", "locators": [{"strategy": "name", "role": "button", "name": "OK"}]},
+        "max_attempts": 3
+      }
+    },
+    {
+      "id": "session_expired",
+      "class": "recoverable",
+      "description": "The operator session timed out; the application asks for sign-on again.",
+      "when": {"text": "Your session has expired", "frame": "main"},
+      "recover": {"action": "restart", "max_attempts": 1}
+    },
+    {
+      "id": "app_error",
+      "class": "recoverable",
+      "description": "The application returned a server error page.",
+      "when": {"text": "Application Error", "frame": "main"},
+      "recover": {"action": "restart", "max_attempts": 1}
+    },
+    {
+      "id": "supervisor_override",
+      "class": "needs_human",
+      "description": "The application requires a supervisor to countersign. Automation does not hold supervisor credentials.",
+      "when": {"text": "Supervisor Override Required", "frame": "main"}
+    },
+    {
+      "id": "signon_rejected",
+      "class": "fatal",
+      "description": "The application rejected the operator credentials.",
+      "when": {"text": "Invalid operator ID or password", "frame": "main"}
+    },
+    {
+      "id": "record_not_found",
+      "class": "business",
+      "description": "No record matches the identifier that was searched for.",
+      "when": {"text": "No member found", "frame": "main"}
+    },
+    {
+      "id": "validation_error",
+      "class": "business",
+      "description": "The application rejected the submitted values; the message says which rule failed.",
+      "when": {"text": "Validation Error", "frame": "main"}
+    },
+    {
+      "id": "permission_denied",
+      "class": "business",
+      "description": "The operator profile is not permitted to view or act on this record.",
+      "when": {"text": "Access denied", "frame": "main"}
+    }
+  ],
+  "redaction": {
+    "field_labels": ["Member Name:", "SSN/TIN:", "Date of Birth:", "Address:", "Phone:", "Nickname:"],
+    "patterns": [
+      {"pattern": "^(Member \\d+) — .+$", "replace": "$1 — [REDACTED]"}
+    ]
+  }
+}

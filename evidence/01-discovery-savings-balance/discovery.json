@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "capability": "member.get_savings_balance",
+  "artifact": "artifacts/member.get_savings_balance.json",
+  "turns": 8,
+  "steps_recorded": 7,
+  "backend": "claude-cli",
+  "model": "claude-opus-5-5",
+  "input_tokens": 21579,
+  "output_tokens": 1838,
+  "cost_usd": 0.0411366,
+  "outputs": {
+    "savings_balance": "[output:savings_balance]"
+  },
+  "human_assisted": false,
+  "duration_ms": 35547,
+  "run_id": "20260930T211643-discover-2abc08",
+  "evidence": "evidence/01-discovery-savings-balance"
+}

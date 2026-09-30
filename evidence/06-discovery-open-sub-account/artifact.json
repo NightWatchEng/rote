@@ -1,0 +1,475 @@
+{
+  "schema_version": "1.0",
+  "id": "member.open_sub_account",
+  "version": "1.0.0",
+  "title": "Open a sub-account for a member",
+  "description": "Opens a new share sub-account of the given type for a member with an opening deposit, and returns the confirmation number and the new account suffix.",
+  "app": {
+    "profile": "meridian-core",
+    "profile_version": "1",
+    "surface": "web/accessibility-tree"
+  },
+  "inputs": [
+    {
+      "name": "member_id",
+      "type": "string",
+      "description": "The member number to open the sub-account for.",
+      "pattern": "^[0-9]{1,10}$"
+    },
+    {
+      "name": "account_type",
+      "type": "enum",
+      "description": "The kind of sub-account to open.",
+      "enum": [
+        "Regular Savings",
+        "Holiday Club",
+        "Share Certificate (12 mo)",
+        "Money Market"
+      ]
+    },
+    {
+      "name": "nickname",
+      "type": "string",
+      "description": "The member's nickname for the account.",
+      "pattern": "^[A-Za-z0-9 ]{1,30}$",
+      "sensitive": true
+    },
+    {
+      "name": "opening_deposit",
+      "type": "money",
+      "description": "Opening deposit in USD, e.g. 250.00."
+    }
+  ],
+  "secrets": [
+    "operator_id",
+    "operator_password"
+  ],
+  "outputs": [
+    {
+      "name": "confirmation_number",
+      "type": "string",
+      "description": "The application's confirmation number for the opened account."
+    },
+    {
+      "name": "new_suffix",
+      "type": "string",
+      "description": "The suffix assigned to the new sub-account."
+    }
+  ],
+  "outcomes": [
+    {
+      "code": "record_not_found",
+      "description": "No record matches the identifier that was searched for."
+    },
+    {
+      "code": "validation_error",
+      "description": "The application rejected the submitted values; the message says which rule failed."
+    },
+    {
+      "code": "permission_denied",
+      "description": "The operator profile is not permitted to view or act on this record."
+    }
+  ],
+  "entry": "/",
+  "steps": [
+    {
+      "id": "s1",
+      "intent": "Enter the operator ID in the sign-on form to begin the session.",
+      "action": "type",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "label",
+            "role": "textbox",
+            "label": "Operator ID:",
+            "side": "left"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "textbox",
+            "index": 1
+          }
+        ],
+        "rationale": "the visible label \"Operator ID:\" sits left of it; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "value": "{{secrets.operator_id}}",
+      "risk": "reversible"
+    },
+    {
+      "id": "s2",
+      "intent": "Enter the operator password to complete sign on.",
+      "action": "type",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "label",
+            "role": "textbox",
+            "label": "Password:",
+            "side": "left"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "textbox",
+            "index": 2
+          }
+        ],
+        "rationale": "the visible label \"Password:\" sits left of it; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "value": "{{secrets.operator_password}}",
+      "risk": "reversible"
+    },
+    {
+      "id": "s3",
+      "intent": "The operator ID and password are both filled in, so the next step is to submit the sign-on form.",
+      "action": "click",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "name",
+            "role": "button",
+            "name": "Sign On"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "button",
+            "index": 1
+          }
+        ],
+        "rationale": "its own name is unique in the frame; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "risk": "reversible",
+      "expect": {
+        "frame": "main",
+        "path": "/home",
+        "title": "Workstation Home"
+      }
+    },
+    {
+      "id": "s4",
+      "intent": "Open Member Inquiry to look up the member.",
+      "action": "click",
+      "target": {
+        "frame": "nav",
+        "locators": [
+          {
+            "strategy": "name",
+            "role": "text",
+            "name": "Member Inquiry"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "text",
+            "index": 2
+          }
+        ],
+        "rationale": "its own name is unique in the frame; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "risk": "reversible",
+      "expect": {
+        "frame": "main",
+        "path": "/inquiry",
+        "title": "Member Inquiry"
+      }
+    },
+    {
+      "id": "s5",
+      "intent": "Enter the member number to look up the member.",
+      "action": "type",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "label",
+            "role": "textbox",
+            "label": "Member Number:",
+            "side": "left"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "textbox",
+            "index": 1
+          }
+        ],
+        "rationale": "the visible label \"Member Number:\" sits left of it; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "value": "{{inputs.member_id}}",
+      "risk": "reversible"
+    },
+    {
+      "id": "s6",
+      "intent": "The member number is entered, so this runs the search to bring up the member's record.",
+      "action": "click",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "name",
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "button",
+            "index": 1
+          }
+        ],
+        "rationale": "its own name is unique in the frame; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "risk": "reversible",
+      "expect": {
+        "frame": "main",
+        "path": "/member",
+        "title": "Member Detail"
+      }
+    },
+    {
+      "id": "s7",
+      "intent": "Start the new sub-account form for this member.",
+      "action": "click",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "name",
+            "role": "link",
+            "name": "Open Sub-Account"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "link",
+            "index": 1
+          }
+        ],
+        "rationale": "its own name is unique in the frame; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "risk": "reversible",
+      "expect": {
+        "frame": "main",
+        "path": "/subaccount/new",
+        "title": "Open Sub-Account"
+      }
+    },
+    {
+      "id": "s8",
+      "intent": "Choose the requested account type for the new sub-account.",
+      "action": "select",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "label",
+            "role": "select",
+            "label": "Account Type:",
+            "side": "left"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "select",
+            "index": 1
+          }
+        ],
+        "rationale": "the visible label \"Account Type:\" sits left of it; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "value": "{{inputs.account_type}}",
+      "risk": "reversible"
+    },
+    {
+      "id": "s9",
+      "intent": "Fill in the Nickname field for the new sub-account.",
+      "action": "type",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "label",
+            "role": "textbox",
+            "label": "Nickname:",
+            "side": "left"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "textbox",
+            "index": 1
+          }
+        ],
+        "rationale": "the visible label \"Nickname:\" sits left of it; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "value": "{{inputs.nickname}}",
+      "risk": "reversible"
+    },
+    {
+      "id": "s10",
+      "intent": "Enter the opening deposit amount in the Opening Deposit field.",
+      "action": "type",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "label",
+            "role": "textbox",
+            "label": "Opening Deposit:",
+            "side": "left"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "textbox",
+            "index": 2
+          }
+        ],
+        "rationale": "the visible label \"Opening Deposit:\" sits left of it; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "value": "{{inputs.opening_deposit}}",
+      "risk": "reversible"
+    },
+    {
+      "id": "s11",
+      "intent": "All fields are filled in, so clicking Continue moves the sub-account opening forward.",
+      "action": "click",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "name",
+            "role": "button",
+            "name": "Continue"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "button",
+            "index": 1
+          }
+        ],
+        "rationale": "its own name is unique in the frame; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "risk": "reversible",
+      "expect": {
+        "frame": "main",
+        "path": "/subaccount/review",
+        "title": "Review New Sub-Account"
+      }
+    },
+    {
+      "id": "s12",
+      "intent": "The review screen shows the entered details. Confirming opens the account and takes the flow to the confirmation screen the goal asks for.",
+      "action": "click",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "name",
+            "role": "button",
+            "name": "Confirm"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "button",
+            "index": 1
+          }
+        ],
+        "rationale": "its own name is unique in the frame; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "risk": "irreversible",
+      "expect": {
+        "frame": "dialog",
+        "title": "confirm"
+      }
+    },
+    {
+      "id": "s13",
+      "intent": "This dialog finishes the Confirm step the operator approved, so clicking OK opens the sub-account and brings up the confirmation screen.",
+      "action": "click",
+      "target": {
+        "frame": "dialog",
+        "locators": [
+          {
+            "strategy": "name",
+            "role": "button",
+            "name": "OK"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "button",
+            "index": 1
+          }
+        ],
+        "rationale": "its own name is unique in the frame; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "risk": "reversible",
+      "expect": {
+        "frame": "main",
+        "path": "/subaccount/confirm",
+        "title": "Sub-Account Opened"
+      }
+    },
+    {
+      "id": "s14",
+      "intent": "Capture the confirmation number shown beside its label on the confirmation screen.",
+      "action": "extract",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "label",
+            "role": "text",
+            "label": "Confirmation Number:",
+            "side": "left"
+          }
+        ],
+        "rationale": "value adjacent to the label \"Confirmation Number:\"; independent of the value itself"
+      },
+      "output": "confirmation_number",
+      "risk": "read"
+    },
+    {
+      "id": "s15",
+      "intent": "Capture the suffix assigned to the new sub-account from beside its label on the confirmation screen.",
+      "action": "extract",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "label",
+            "role": "text",
+            "label": "New Suffix:",
+            "side": "left"
+          }
+        ],
+        "rationale": "value adjacent to the label \"New Suffix:\"; independent of the value itself"
+      },
+      "output": "new_suffix",
+      "risk": "read"
+    }
+  ],
+  "success": {
+    "all": [
+      {
+        "text": "The sub-account has been opened.",
+        "frame": "main"
+      },
+      {
+        "text": "{{inputs.member_id}}",
+        "frame": "main"
+      },
+      {
+        "text": "{{inputs.account_type}}",
+        "frame": "main"
+      }
+    ]
+  },
+  "risk": "irreversible",
+  "approval": {
+    "status": "draft"
+  },
+  "provenance": {
+    "recorded_at": "2026-09-30T21:18:42Z",
+    "goal": "Sign on to the teller workstation, look up member {{inputs.member_id}}, and open a new sub-account for them: account type {{inputs.account_type}}, nickname {{inputs.nickname}}, opening deposit {{inputs.opening_deposit}}. Carry it through to the confirmation screen, then read the confirmation number and the new account suffix.",
+    "model": "claude-opus-5-5",
+    "backend": "claude-cli",
+    "run_id": "20260930T211719-discover-ccb26c",
+    "recorded_on_tenant": "pinecrest",
+    "human_assisted": false
+  }
+}

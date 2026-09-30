@@ -1,0 +1,227 @@
+{
+  "seq": 28,
+  "url": "http://127.0.0.1:8080/",
+  "frames": [
+    {
+      "name": "top",
+      "url": "http://127.0.0.1:8080/",
+      "title": "MeridianCore Teller Workstation"
+    },
+    {
+      "name": "banner",
+      "url": "http://127.0.0.1:8080/banner",
+      "title": "Banner"
+    },
+    {
+      "name": "nav",
+      "url": "http://127.0.0.1:8080/nav",
+      "title": "Menu"
+    },
+    {
+      "name": "main",
+      "url": "http://127.0.0.1:8080/subaccount/override",
+      "title": "Supervisor Override Required"
+    }
+  ],
+  "elements": [
+    {
+      "ref": 1,
+      "frame": "banner",
+      "role": "text",
+      "name": "Pinecrest Community Credit Union",
+      "bounds": {
+        "x": 10,
+        "y": 8,
+        "w": 298.046875,
+        "h": 20
+      },
+      "cell": {
+        "x": 8,
+        "y": 6,
+        "w": 736.015625,
+        "h": 25
+      }
+    },
+    {
+      "ref": 2,
+      "frame": "banner",
+      "role": "text",
+      "name": "MeridianCore Teller Workstation v4.2",
+      "bounds": {
+        "x": 1057.328125,
+        "y": 11,
+        "w": 212.671875,
+        "h": 15
+      },
+      "cell": {
+        "x": 744.015625,
+        "y": 6,
+        "w": 527.984375,
+        "h": 25
+      }
+    },
+    {
+      "ref": 3,
+      "frame": "nav",
+      "role": "text",
+      "name": "Main Menu",
+      "bounds": {
+        "x": 15,
+        "y": 74,
+        "w": 67.171875,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 69,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 4,
+      "frame": "nav",
+      "role": "text",
+      "name": "Member Inquiry",
+      "bounds": {
+        "x": 15,
+        "y": 100,
+        "w": 90.3125,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 95,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 5,
+      "frame": "nav",
+      "role": "text",
+      "name": "Rate Sheet",
+      "bounds": {
+        "x": 15,
+        "y": 126,
+        "w": 65.046875,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 121,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 6,
+      "frame": "nav",
+      "role": "text",
+      "name": "Sign Off",
+      "bounds": {
+        "x": 15,
+        "y": 152,
+        "w": 46.734375,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 147,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 7,
+      "frame": "main",
+      "role": "text",
+      "name": "Supervisor Override Required",
+      "bounds": {
+        "x": 193,
+        "y": 71,
+        "w": 227.640625,
+        "h": 17
+      },
+      "cell": {
+        "x": 189,
+        "y": 67,
+        "w": 1083,
+        "h": 26
+      }
+    },
+    {
+      "ref": 8,
+      "frame": "main",
+      "role": "text",
+      "name": "Opening deposits of [AMOUNT] or more require a supervisor to countersign.",
+      "bounds": {
+        "x": 195,
+        "y": 99,
+        "w": 440.109375,
+        "h": 15
+      },
+      "cell": {
+        "x": 189,
+        "y": 93,
+        "w": 452.109375,
+        "h": 82
+      }
+    },
+    {
+      "ref": 9,
+      "frame": "main",
+      "role": "text",
+      "name": "Override Code:",
+      "bounds": {
+        "x": 198,
+        "y": 135,
+        "w": 88.15625,
+        "h": 15
+      },
+      "cell": {
+        "x": 195,
+        "y": 129,
+        "w": 94.15625,
+        "h": 27
+      }
+    },
+    {
+      "ref": 10,
+      "frame": "main",
+      "role": "textbox",
+      "name": "",
+      "protected": true,
+      "bounds": {
+        "x": 292.15625,
+        "y": 132,
+        "w": 97,
+        "h": 21
+      },
+      "cell": {
+        "x": 289.15625,
+        "y": 129,
+        "w": 103,
+        "h": 27
+      }
+    },
+    {
+      "ref": 11,
+      "frame": "main",
+      "role": "button",
+      "name": "Authorize",
+      "bounds": {
+        "x": 395.15625,
+        "y": 132,
+        "w": 72.328125,
+        "h": 21
+      },
+      "cell": {
+        "x": 392.15625,
+        "y": 129,
+        "w": 78.328125,
+        "h": 27
+      }
+    }
+  ]
+}

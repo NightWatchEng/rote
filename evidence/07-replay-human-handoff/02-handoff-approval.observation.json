@@ -1,0 +1,352 @@
+{
+  "seq": 36,
+  "url": "http://127.0.0.1:8080/",
+  "frames": [
+    {
+      "name": "top",
+      "url": "http://127.0.0.1:8080/",
+      "title": "MeridianCore Teller Workstation"
+    },
+    {
+      "name": "banner",
+      "url": "http://127.0.0.1:8080/banner",
+      "title": "Banner"
+    },
+    {
+      "name": "nav",
+      "url": "http://127.0.0.1:8080/nav",
+      "title": "Menu"
+    },
+    {
+      "name": "main",
+      "url": "http://127.0.0.1:8080/subaccount/review",
+      "title": "Review New Sub-Account"
+    }
+  ],
+  "elements": [
+    {
+      "ref": 1,
+      "frame": "banner",
+      "role": "text",
+      "name": "Pinecrest Community Credit Union",
+      "bounds": {
+        "x": 10,
+        "y": 8,
+        "w": 298.046875,
+        "h": 20
+      },
+      "cell": {
+        "x": 8,
+        "y": 6,
+        "w": 736.015625,
+        "h": 25
+      }
+    },
+    {
+      "ref": 2,
+      "frame": "banner",
+      "role": "text",
+      "name": "MeridianCore Teller Workstation v4.2",
+      "bounds": {
+        "x": 1057.328125,
+        "y": 11,
+        "w": 212.671875,
+        "h": 15
+      },
+      "cell": {
+        "x": 744.015625,
+        "y": 6,
+        "w": 527.984375,
+        "h": 25
+      }
+    },
+    {
+      "ref": 3,
+      "frame": "nav",
+      "role": "text",
+      "name": "Main Menu",
+      "bounds": {
+        "x": 15,
+        "y": 74,
+        "w": 67.171875,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 69,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 4,
+      "frame": "nav",
+      "role": "text",
+      "name": "Member Inquiry",
+      "bounds": {
+        "x": 15,
+        "y": 100,
+        "w": 90.3125,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 95,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 5,
+      "frame": "nav",
+      "role": "text",
+      "name": "Rate Sheet",
+      "bounds": {
+        "x": 15,
+        "y": 126,
+        "w": 65.046875,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 121,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 6,
+      "frame": "nav",
+      "role": "text",
+      "name": "Sign Off",
+      "bounds": {
+        "x": 15,
+        "y": 152,
+        "w": 46.734375,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 147,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 7,
+      "frame": "main",
+      "role": "text",
+      "name": "Review New Sub-Account",
+      "bounds": {
+        "x": 193,
+        "y": 71,
+        "w": 196.484375,
+        "h": 17
+      },
+      "cell": {
+        "x": 189,
+        "y": 67,
+        "w": 1083,
+        "h": 26
+      }
+    },
+    {
+      "ref": 8,
+      "frame": "main",
+      "role": "text",
+      "name": "Verify the details below. Confirming opens the account and posts the opening deposit.",
+      "bounds": {
+        "x": 195,
+        "y": 99,
+        "w": 492.890625,
+        "h": 15
+      },
+      "cell": {
+        "x": 189,
+        "y": 93,
+        "w": 504.890625,
+        "h": 200
+      }
+    },
+    {
+      "ref": 9,
+      "frame": "main",
+      "role": "text",
+      "name": "Member Number:",
+      "bounds": {
+        "x": 200,
+        "y": 134,
+        "w": 124.484375,
+        "h": 17
+      },
+      "cell": {
+        "x": 196,
+        "y": 130,
+        "w": 132.484375,
+        "h": 26
+      }
+    },
+    {
+      "ref": 10,
+      "frame": "main",
+      "role": "text",
+      "name": "10058",
+      "bounds": {
+        "x": 333.484375,
+        "y": 134,
+        "w": 44.5,
+        "h": 17
+      },
+      "cell": {
+        "x": 329.484375,
+        "y": 130,
+        "w": 109.375,
+        "h": 26
+      }
+    },
+    {
+      "ref": 11,
+      "frame": "main",
+      "role": "text",
+      "name": "Account Type:",
+      "bounds": {
+        "x": 223.375,
+        "y": 161,
+        "w": 101.109375,
+        "h": 17
+      },
+      "cell": {
+        "x": 196,
+        "y": 157,
+        "w": 132.484375,
+        "h": 26
+      }
+    },
+    {
+      "ref": 12,
+      "frame": "main",
+      "role": "text",
+      "name": "Money Market",
+      "bounds": {
+        "x": 333.484375,
+        "y": 161,
+        "w": 101.375,
+        "h": 17
+      },
+      "cell": {
+        "x": 329.484375,
+        "y": 157,
+        "w": 109.375,
+        "h": 26
+      }
+    },
+    {
+      "ref": 13,
+      "frame": "main",
+      "role": "text",
+      "name": "Nickname:",
+      "bounds": {
+        "x": 248.90625,
+        "y": 188,
+        "w": 75.578125,
+        "h": 17
+      },
+      "cell": {
+        "x": 196,
+        "y": 184,
+        "w": 132.484375,
+        "h": 26
+      }
+    },
+    {
+      "ref": 14,
+      "frame": "main",
+      "role": "text",
+      "name": "[REDACTED]",
+      "bounds": {
+        "x": 333.484375,
+        "y": 188,
+        "w": 59.578125,
+        "h": 17
+      },
+      "cell": {
+        "x": 329.484375,
+        "y": 184,
+        "w": 109.375,
+        "h": 26
+      }
+    },
+    {
+      "ref": 15,
+      "frame": "main",
+      "role": "text",
+      "name": "Opening Deposit:",
+      "bounds": {
+        "x": 200.84375,
+        "y": 215,
+        "w": 123.640625,
+        "h": 17
+      },
+      "cell": {
+        "x": 196,
+        "y": 211,
+        "w": 132.484375,
+        "h": 26
+      }
+    },
+    {
+      "ref": 16,
+      "frame": "main",
+      "role": "text",
+      "name": "[AMOUNT]",
+      "bounds": {
+        "x": 333.484375,
+        "y": 215,
+        "w": 80.078125,
+        "h": 17
+      },
+      "cell": {
+        "x": 329.484375,
+        "y": 211,
+        "w": 109.375,
+        "h": 26
+      }
+    },
+    {
+      "ref": 17,
+      "frame": "main",
+      "role": "button",
+      "name": "Confirm",
+      "bounds": {
+        "x": 195,
+        "y": 253,
+        "w": 62.671875,
+        "h": 21
+      },
+      "cell": {
+        "x": 189,
+        "y": 93,
+        "w": 504.890625,
+        "h": 200
+      }
+    },
+    {
+      "ref": 18,
+      "frame": "main",
+      "role": "button",
+      "name": "Cancel",
+      "bounds": {
+        "x": 268.515625,
+        "y": 253,
+        "w": 57.5,
+        "h": 21
+      },
+      "cell": {
+        "x": 189,
+        "y": 93,
+        "w": 504.890625,
+        "h": 200
+      }
+    }
+  ]
+}

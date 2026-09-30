@@ -1,0 +1,17 @@
+{
+  "status": "business_outcome",
+  "capability": "member.open_sub_account",
+  "version": "1.0.0",
+  "tenant": "pinecrest",
+  "run_id": "20260930T211907-replay-605591",
+  "outcome": {
+    "code": "validation_error",
+    "message": "Validation Error: Opening deposit is below the [AMOUNT] minimum for Share Certificate (12 mo).",
+    "at_step": "s11"
+  },
+  "steps_completed": 10,
+  "steps_total": 15,
+  "attempts": 1,
+  "duration_ms": 1457,
+  "evidence": "evidence/10-replay-validation-outcome"
+}

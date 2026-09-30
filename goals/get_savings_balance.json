@@ -1,0 +1,15 @@
+{
+  "id": "member.get_savings_balance",
+  "version": "1.0.0",
+  "title": "Get a member's savings balance",
+  "description": "Looks a member up by member number and returns the current balance of their Regular Savings share.",
+  "goal": "Sign on to the teller workstation, look up member {{inputs.member_id}}, and read the current balance of their Regular Savings account.",
+  "entry": "/",
+  "inputs": [
+    {"name": "member_id", "type": "string", "pattern": "^[0-9]{1,10}$", "description": "The member number to look up."}
+  ],
+  "secrets": ["operator_id", "operator_password"],
+  "outputs": [
+    {"name": "savings_balance", "type": "money", "sensitive": true, "description": "Current balance of the member's Regular Savings share, as a decimal string in USD."}
+  ]
+}

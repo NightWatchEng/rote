@@ -1,0 +1,208 @@
+{
+  "seq": 34,
+  "url": "http://127.0.0.1:8081/",
+  "frames": [
+    {
+      "name": "top",
+      "url": "http://127.0.0.1:8081/",
+      "title": "MeridianCore Teller Workstation"
+    },
+    {
+      "name": "banner",
+      "url": "http://127.0.0.1:8081/banner",
+      "title": "Banner"
+    },
+    {
+      "name": "nav",
+      "url": "http://127.0.0.1:8081/nav",
+      "title": "Menu"
+    },
+    {
+      "name": "main",
+      "url": "http://127.0.0.1:8081/inquiry",
+      "title": "Member Lookup"
+    }
+  ],
+  "elements": [
+    {
+      "ref": 1,
+      "frame": "banner",
+      "role": "text",
+      "name": "Lakeshore Federal Credit Union",
+      "bounds": {
+        "x": 10,
+        "y": 8,
+        "w": 272.078125,
+        "h": 20
+      },
+      "cell": {
+        "x": 8,
+        "y": 6,
+        "w": 708.1875,
+        "h": 25
+      }
+    },
+    {
+      "ref": 2,
+      "frame": "banner",
+      "role": "text",
+      "name": "MeridianCore Teller Workstation v4.3",
+      "bounds": {
+        "x": 1057.328125,
+        "y": 11,
+        "w": 212.671875,
+        "h": 15
+      },
+      "cell": {
+        "x": 716.1875,
+        "y": 6,
+        "w": 555.8125,
+        "h": 25
+      }
+    },
+    {
+      "ref": 3,
+      "frame": "nav",
+      "role": "text",
+      "name": "Main Menu",
+      "bounds": {
+        "x": 15,
+        "y": 74,
+        "w": 67.171875,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 69,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 4,
+      "frame": "nav",
+      "role": "text",
+      "name": "Member Lookup",
+      "bounds": {
+        "x": 15,
+        "y": 100,
+        "w": 93.953125,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 95,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 5,
+      "frame": "nav",
+      "role": "text",
+      "name": "Rate Sheet",
+      "bounds": {
+        "x": 15,
+        "y": 126,
+        "w": 65.046875,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 121,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 6,
+      "frame": "nav",
+      "role": "text",
+      "name": "Sign Off",
+      "bounds": {
+        "x": 15,
+        "y": 152,
+        "w": 46.734375,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 147,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 7,
+      "frame": "main",
+      "role": "text",
+      "name": "Member Lookup",
+      "bounds": {
+        "x": 193,
+        "y": 71,
+        "w": 123.5625,
+        "h": 17
+      },
+      "cell": {
+        "x": 189,
+        "y": 67,
+        "w": 1083,
+        "h": 26
+      }
+    },
+    {
+      "ref": 8,
+      "frame": "main",
+      "role": "text",
+      "name": "Account Holder No.:",
+      "bounds": {
+        "x": 198,
+        "y": 105,
+        "w": 116.34375,
+        "h": 15
+      },
+      "cell": {
+        "x": 195,
+        "y": 99,
+        "w": 122.34375,
+        "h": 27
+      }
+    },
+    {
+      "ref": 9,
+      "frame": "main",
+      "role": "textbox",
+      "name": "",
+      "bounds": {
+        "x": 320.34375,
+        "y": 102,
+        "w": 97,
+        "h": 21
+      },
+      "cell": {
+        "x": 317.34375,
+        "y": 99,
+        "w": 103,
+        "h": 27
+      }
+    },
+    {
+      "ref": 10,
+      "frame": "main",
+      "role": "button",
+      "name": "Find",
+      "bounds": {
+        "x": 423.34375,
+        "y": 102,
+        "w": 41.9375,
+        "h": 21
+      },
+      "cell": {
+        "x": 420.34375,
+        "y": 99,
+        "w": 47.9375,
+        "h": 27
+      }
+    }
+  ]
+}

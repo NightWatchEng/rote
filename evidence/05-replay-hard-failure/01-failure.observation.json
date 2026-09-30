@@ -1,0 +1,660 @@
+{
+  "seq": 40,
+  "url": "http://127.0.0.1:8080/",
+  "frames": [
+    {
+      "name": "top",
+      "url": "http://127.0.0.1:8080/",
+      "title": "MeridianCore Teller Workstation"
+    },
+    {
+      "name": "banner",
+      "url": "http://127.0.0.1:8080/banner",
+      "title": "Banner"
+    },
+    {
+      "name": "nav",
+      "url": "http://127.0.0.1:8080/nav",
+      "title": "Menu"
+    },
+    {
+      "name": "main",
+      "url": "http://127.0.0.1:8080/member?no=10063",
+      "title": "Member Detail"
+    }
+  ],
+  "elements": [
+    {
+      "ref": 1,
+      "frame": "banner",
+      "role": "text",
+      "name": "Pinecrest Community Credit Union",
+      "bounds": {
+        "x": 10,
+        "y": 8,
+        "w": 298.046875,
+        "h": 20
+      },
+      "cell": {
+        "x": 8,
+        "y": 6,
+        "w": 736.015625,
+        "h": 25
+      }
+    },
+    {
+      "ref": 2,
+      "frame": "banner",
+      "role": "text",
+      "name": "MeridianCore Teller Workstation v4.2",
+      "bounds": {
+        "x": 1057.328125,
+        "y": 11,
+        "w": 212.671875,
+        "h": 15
+      },
+      "cell": {
+        "x": 744.015625,
+        "y": 6,
+        "w": 527.984375,
+        "h": 25
+      }
+    },
+    {
+      "ref": 3,
+      "frame": "nav",
+      "role": "text",
+      "name": "Main Menu",
+      "bounds": {
+        "x": 15,
+        "y": 74,
+        "w": 67.171875,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 69,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 4,
+      "frame": "nav",
+      "role": "text",
+      "name": "Member Inquiry",
+      "bounds": {
+        "x": 15,
+        "y": 100,
+        "w": 90.3125,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 95,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 5,
+      "frame": "nav",
+      "role": "text",
+      "name": "Rate Sheet",
+      "bounds": {
+        "x": 15,
+        "y": 126,
+        "w": 65.046875,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 121,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 6,
+      "frame": "nav",
+      "role": "text",
+      "name": "Sign Off",
+      "bounds": {
+        "x": 15,
+        "y": 152,
+        "w": 46.734375,
+        "h": 15
+      },
+      "cell": {
+        "x": 10,
+        "y": 147,
+        "w": 160,
+        "h": 25
+      }
+    },
+    {
+      "ref": 7,
+      "frame": "main",
+      "role": "text",
+      "name": "Member Detail",
+      "bounds": {
+        "x": 193,
+        "y": 71,
+        "w": 109.375,
+        "h": 17
+      },
+      "cell": {
+        "x": 189,
+        "y": 67,
+        "w": 1083,
+        "h": 26
+      }
+    },
+    {
+      "ref": 8,
+      "frame": "main",
+      "role": "text",
+      "name": "Member Name:",
+      "bounds": {
+        "x": 210.5625,
+        "y": 103,
+        "w": 89.578125,
+        "h": 15
+      },
+      "cell": {
+        "x": 196,
+        "y": 100,
+        "w": 107.140625,
+        "h": 21
+      }
+    },
+    {
+      "ref": 9,
+      "frame": "main",
+      "role": "text",
+      "name": "[REDACTED]",
+      "bounds": {
+        "x": 307.140625,
+        "y": 103,
+        "w": 91.75,
+        "h": 15
+      },
+      "cell": {
+        "x": 304.140625,
+        "y": 100,
+        "w": 213.375,
+        "h": 21
+      }
+    },
+    {
+      "ref": 10,
+      "frame": "main",
+      "role": "text",
+      "name": "Member Number:",
+      "bounds": {
+        "x": 199,
+        "y": 125,
+        "w": 101.140625,
+        "h": 15
+      },
+      "cell": {
+        "x": 196,
+        "y": 122,
+        "w": 107.140625,
+        "h": 21
+      }
+    },
+    {
+      "ref": 11,
+      "frame": "main",
+      "role": "text",
+      "name": "10063",
+      "bounds": {
+        "x": 307.140625,
+        "y": 125,
+        "w": 36.15625,
+        "h": 15
+      },
+      "cell": {
+        "x": 304.140625,
+        "y": 122,
+        "w": 213.375,
+        "h": 21
+      }
+    },
+    {
+      "ref": 12,
+      "frame": "main",
+      "role": "text",
+      "name": "SSN/TIN:",
+      "bounds": {
+        "x": 245.234375,
+        "y": 147,
+        "w": 54.90625,
+        "h": 15
+      },
+      "cell": {
+        "x": 196,
+        "y": 144,
+        "w": 107.140625,
+        "h": 21
+      }
+    },
+    {
+      "ref": 13,
+      "frame": "main",
+      "role": "text",
+      "name": "[REDACTED]",
+      "bounds": {
+        "x": 307.140625,
+        "y": 147,
+        "w": 73.734375,
+        "h": 15
+      },
+      "cell": {
+        "x": 304.140625,
+        "y": 144,
+        "w": 213.375,
+        "h": 21
+      }
+    },
+    {
+      "ref": 14,
+      "frame": "main",
+      "role": "text",
+      "name": "Date of Birth:",
+      "bounds": {
+        "x": 224.265625,
+        "y": 169,
+        "w": 75.875,
+        "h": 15
+      },
+      "cell": {
+        "x": 196,
+        "y": 166,
+        "w": 107.140625,
+        "h": 21
+      }
+    },
+    {
+      "ref": 15,
+      "frame": "main",
+      "role": "text",
+      "name": "[REDACTED]",
+      "bounds": {
+        "x": 307.140625,
+        "y": 169,
+        "w": 65.078125,
+        "h": 15
+      },
+      "cell": {
+        "x": 304.140625,
+        "y": 166,
+        "w": 213.375,
+        "h": 21
+      }
+    },
+    {
+      "ref": 16,
+      "frame": "main",
+      "role": "text",
+      "name": "Address:",
+      "bounds": {
+        "x": 248.828125,
+        "y": 191,
+        "w": 51.3125,
+        "h": 15
+      },
+      "cell": {
+        "x": 196,
+        "y": 188,
+        "w": 107.140625,
+        "h": 21
+      }
+    },
+    {
+      "ref": 17,
+      "frame": "main",
+      "role": "text",
+      "name": "[REDACTED]",
+      "bounds": {
+        "x": 307.140625,
+        "y": 191,
+        "w": 207.375,
+        "h": 15
+      },
+      "cell": {
+        "x": 304.140625,
+        "y": 188,
+        "w": 213.375,
+        "h": 21
+      }
+    },
+    {
+      "ref": 18,
+      "frame": "main",
+      "role": "text",
+      "name": "Phone:",
+      "bounds": {
+        "x": 258.9375,
+        "y": 213,
+        "w": 41.203125,
+        "h": 15
+      },
+      "cell": {
+        "x": 196,
+        "y": 210,
+        "w": 107.140625,
+        "h": 21
+      }
+    },
+    {
+      "ref": 19,
+      "frame": "main",
+      "role": "text",
+      "name": "[REDACTED]",
+      "bounds": {
+        "x": 307.140625,
+        "y": 213,
+        "w": 87.9375,
+        "h": 15
+      },
+      "cell": {
+        "x": 304.140625,
+        "y": 210,
+        "w": 213.375,
+        "h": 21
+      }
+    },
+    {
+      "ref": 20,
+      "frame": "main",
+      "role": "text",
+      "name": "Status:",
+      "bounds": {
+        "x": 259.671875,
+        "y": 235,
+        "w": 40.46875,
+        "h": 15
+      },
+      "cell": {
+        "x": 196,
+        "y": 232,
+        "w": 107.140625,
+        "h": 21
+      }
+    },
+    {
+      "ref": 21,
+      "frame": "main",
+      "role": "text",
+      "name": "Active",
+      "bounds": {
+        "x": 307.140625,
+        "y": 235,
+        "w": 35.40625,
+        "h": 15
+      },
+      "cell": {
+        "x": 304.140625,
+        "y": 232,
+        "w": 213.375,
+        "h": 21
+      }
+    },
+    {
+      "ref": 22,
+      "frame": "main",
+      "role": "text",
+      "name": "Share Accounts",
+      "bounds": {
+        "x": 195,
+        "y": 272,
+        "w": 98.5,
+        "h": 15
+      },
+      "cell": {
+        "x": 195,
+        "y": 254,
+        "w": 551.40625,
+        "h": 88
+      }
+    },
+    {
+      "ref": 23,
+      "frame": "main",
+      "role": "text",
+      "name": "Suffix",
+      "bounds": {
+        "x": 200,
+        "y": 292,
+        "w": 44.453125,
+        "h": 17
+      },
+      "cell": {
+        "x": 196,
+        "y": 288,
+        "w": 52.453125,
+        "h": 26
+      }
+    },
+    {
+      "ref": 24,
+      "frame": "main",
+      "role": "text",
+      "name": "Description",
+      "bounds": {
+        "x": 253.453125,
+        "y": 292,
+        "w": 88.015625,
+        "h": 17
+      },
+      "cell": {
+        "x": 249.453125,
+        "y": 288,
+        "w": 160.96875,
+        "h": 26
+      }
+    },
+    {
+      "ref": 25,
+      "frame": "main",
+      "role": "text",
+      "name": "Current Balance",
+      "bounds": {
+        "x": 415.421875,
+        "y": 292,
+        "w": 123.59375,
+        "h": 17
+      },
+      "cell": {
+        "x": 411.421875,
+        "y": 288,
+        "w": 131.59375,
+        "h": 26
+      }
+    },
+    {
+      "ref": 26,
+      "frame": "main",
+      "role": "text",
+      "name": "Available Balance",
+      "bounds": {
+        "x": 548.015625,
+        "y": 292,
+        "w": 135.484375,
+        "h": 17
+      },
+      "cell": {
+        "x": 544.015625,
+        "y": 288,
+        "w": 143.484375,
+        "h": 26
+      }
+    },
+    {
+      "ref": 27,
+      "frame": "main",
+      "role": "text",
+      "name": "Status",
+      "bounds": {
+        "x": 692.5,
+        "y": 292,
+        "w": 48.90625,
+        "h": 17
+      },
+      "cell": {
+        "x": 688.5,
+        "y": 288,
+        "w": 56.90625,
+        "h": 26
+      }
+    },
+    {
+      "ref": 28,
+      "frame": "main",
+      "role": "text",
+      "name": "0002",
+      "bounds": {
+        "x": 200,
+        "y": 319,
+        "w": 35.59375,
+        "h": 17
+      },
+      "cell": {
+        "x": 196,
+        "y": 315,
+        "w": 52.453125,
+        "h": 26
+      }
+    },
+    {
+      "ref": 29,
+      "frame": "main",
+      "role": "text",
+      "name": "Share Draft Checking",
+      "bounds": {
+        "x": 253.453125,
+        "y": 319,
+        "w": 152.96875,
+        "h": 17
+      },
+      "cell": {
+        "x": 249.453125,
+        "y": 315,
+        "w": 160.96875,
+        "h": 26
+      }
+    },
+    {
+      "ref": 30,
+      "frame": "main",
+      "role": "text",
+      "name": "[AMOUNT]",
+      "bounds": {
+        "x": 467.828125,
+        "y": 319,
+        "w": 71.1875,
+        "h": 17
+      },
+      "cell": {
+        "x": 411.421875,
+        "y": 315,
+        "w": 131.59375,
+        "h": 26
+      }
+    },
+    {
+      "ref": 31,
+      "frame": "main",
+      "role": "text",
+      "name": "[AMOUNT]",
+      "bounds": {
+        "x": 612.3125,
+        "y": 319,
+        "w": 71.1875,
+        "h": 17
+      },
+      "cell": {
+        "x": 544.015625,
+        "y": 315,
+        "w": 143.484375,
+        "h": 26
+      }
+    },
+    {
+      "ref": 32,
+      "frame": "main",
+      "role": "text",
+      "name": "Open",
+      "bounds": {
+        "x": 692.5,
+        "y": 319,
+        "w": 39.140625,
+        "h": 17
+      },
+      "cell": {
+        "x": 688.5,
+        "y": 315,
+        "w": 56.90625,
+        "h": 26
+      }
+    },
+    {
+      "ref": 33,
+      "frame": "main",
+      "role": "link",
+      "name": "Open Sub-Account",
+      "href": "http://127.0.0.1:8080/subaccount/new?no=10063",
+      "bounds": {
+        "x": 195,
+        "y": 360,
+        "w": 135.203125,
+        "h": 17
+      },
+      "cell": {
+        "x": 195,
+        "y": 342,
+        "w": 551.40625,
+        "h": 36
+      }
+    },
+    {
+      "ref": 34,
+      "frame": "main",
+      "role": "text",
+      "name": "|",
+      "bounds": {
+        "x": 330.203125,
+        "y": 360,
+        "w": 21.9375,
+        "h": 17
+      },
+      "cell": {
+        "x": 195,
+        "y": 342,
+        "w": 551.40625,
+        "h": 36
+      }
+    },
+    {
+      "ref": 35,
+      "frame": "main",
+      "role": "link",
+      "name": "New Inquiry",
+      "href": "http://127.0.0.1:8080/inquiry",
+      "bounds": {
+        "x": 352.140625,
+        "y": 360,
+        "w": 84.484375,
+        "h": 17
+      },
+      "cell": {
+        "x": 195,
+        "y": 342,
+        "w": 551.40625,
+        "h": 36
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+# secrets and local config
+.env
+.env.*
+!.env.example
+
+# build output and per-run working evidence (curated copies live in /evidence)
+/bin/
+/runs/
+*.test
+*.out
+.DS_Store

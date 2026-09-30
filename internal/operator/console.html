@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Operator Console</title>
+<style>
+  body { font: 14px/1.4 system-ui, sans-serif; margin: 0; background: #f4f4f2; color: #1b1b1b; }
+  header { background: #1f2a37; color: #fff; padding: 10px 16px; display: flex; gap: 16px; align-items: center; }
+  header b { font-size: 15px; }
+  .pill { padding: 2px 10px; border-radius: 10px; background: #475569; font-size: 12px; }
+  .pill.automation { background: #2563eb; } .pill.pending_human { background: #b45309; } .pill.human { background: #15803d; }
+  main { display: grid; grid-template-columns: 340px 1fr; gap: 16px; padding: 16px; }
+  .card { background: #fff; border: 1px solid #d6d6d0; border-radius: 6px; padding: 12px; }
+  h3 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: #555; }
+  dl { margin: 0; } dt { font-weight: 600; margin-top: 8px; } dd { margin: 0; word-break: break-word; }
+  pre { background: #f6f6f4; padding: 8px; max-height: 180px; overflow: auto; font-size: 12px; white-space: pre-wrap; }
+  button { padding: 6px 10px; margin: 4px 4px 0 0; cursor: pointer; }
+  input[type=text], input[type=password] { padding: 5px; width: 100%; box-sizing: border-box; }
+  #screen { max-width: 100%; border: 2px solid #999; cursor: not-allowed; display: block; }
+  #screen.live { border-color: #15803d; cursor: crosshair; }
+  .muted { color: #777; } .row { display: flex; gap: 6px; margin-top: 6px; }
+  #log { font-size: 12px; max-height: 140px; overflow: auto; }
+</style>
+</head>
+<body>
+<header>
+  <b>Operator Console</b>
+  <span>control: <span id="holder" class="pill">-</span></span>
+  <span id="epoch" class="muted"></span>
+  <span style="flex:1"></span>
+  <label>operator <input id="operator" type="text" value="operator" style="width:120px"></label>
+</header>
+<main>
+  <div>
+    <div class="card" id="request"><h3>Intervention</h3><div class="muted">No open intervention. Automation is running.</div></div>
+    <div class="card" style="margin-top:12px">
+      <h3>Drive the session</h3>
+      <div class="muted">Take control, then click on the live view. Text goes to the focused field and is never logged.</div>
+      <div class="row"><input id="text" type="password" placeholder="text to type"><button onclick="sendText()">Type</button></div>
+      <div class="row"><button onclick="key('Enter')">Enter</button><button onclick="key('Tab')">Tab</button><button onclick="key('Backspace')">Backspace</button><button onclick="key('Escape')">Esc</button></div>
+      <div id="log"></div>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Live session <span class="muted">(the same session automation was using)</span></h3>
+    <img id="screen" alt="live session">
+  </div>
+</main>
+<script>
+let iv = null, holder = '';
+const $ = id => document.getElementById(id);
+const op = () => $('operator').value.trim();
+function note(msg) { $('log').insertAdjacentHTML('afterbegin', '<div>' + new Date().toLocaleTimeString() + ' ' + msg + '</div>'); }
+async function post(path, body) {
+  const r = await fetch(path, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
+  const t = await r.text();
+  if (!r.ok) note('<b>refused:</b> ' + t);
+  return r.ok;
+}
+const esc = s => String(s ?? '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+function render(state) {
+  holder = state.control.holder;
+  $('holder').textContent = holder + (state.control.operator ? ' (' + state.control.operator + ')' : '');
+  $('holder').className = 'pill ' + holder;
+  $('epoch').textContent = 'epoch ' + state.control.epoch;
+  $('screen').className = holder === 'human' ? 'live' : '';
+  iv = state.intervention;
+  if (!iv) { $('request').innerHTML = '<h3>Intervention</h3><div class="muted">No open intervention. Automation is running.</div>'; return; }
+  const q = iv.request;
+  let buttons = '';
+  if (iv.status === 'pending') buttons += '<button onclick="claim()">Take control</button>';
+  if (q.kind === 'approval') buttons += '<button onclick="resolve(\'approve\')">Approve</button><button onclick="resolve(\'deny\')">Deny</button>';
+  if (iv.status === 'claimed') buttons += '<button onclick="resolve(\'resume\')">Hand back: resume where you paused</button><button onclick="resolve(\'step_done\')">Hand back: I did that step by hand</button>';
+  buttons += '<button onclick="resolve(\'abort\')">Abort run</button>';
+  $('request').innerHTML = '<h3>Intervention ' + esc(iv.id) + ' &mdash; ' + esc(q.kind) + '</h3><dl>' +
+    '<dt>Why automation stopped</dt><dd>' + esc(q.reason) + '</dd>' +
+    '<dt>Capability</dt><dd>' + esc(q.capability) + '</dd>' +
+    (q.goal ? '<dt>Goal</dt><dd>' + esc(q.goal) + '</dd>' : '') +
+    (q.step_id ? '<dt>Step</dt><dd>' + esc(q.step_id) + ' &mdash; ' + esc(q.step_intent) + '</dd>' : '') +
+    (q.expected ? '<dt>Automation expected</dt><dd>' + esc(q.expected) + '</dd>' : '') +
+    '<dt>Screen when it stopped (redacted)</dt><dd><pre>' + esc((q.screen || []).join('\n')) + '</pre></dd></dl>' +
+    '<input id="note" type="text" placeholder="note for the record">' + buttons;
+}
+async function poll() {
+  try { render(await (await fetch('/api/state')).json()); } catch (e) {}
+  $('screen').src = '/api/screen?t=' + Date.now();
+}
+const claim = () => post('/api/claim', {id: iv.id, operator: op()}).then(poll);
+const resolve = action => post('/api/resolve', {id: iv.id, operator: op(), action, note: ($('note') || {}).value || ''}).then(poll);
+const input = body => iv && post('/api/input', Object.assign({id: iv.id, operator: op()}, body)).then(ok => { if (ok) note('sent ' + body.kind); poll(); });
+function sendText() { input({kind: 'type', text: $('text').value}); $('text').value = ''; }
+const key = k => input({kind: 'key', key: k});
+$('screen').addEventListener('click', e => {
+  if (holder !== 'human') return;
+  const img = e.target, r = img.getBoundingClientRect();
+  input({kind: 'click', x: (e.clientX - r.left) * img.naturalWidth / r.width, y: (e.clientY - r.top) * img.naturalHeight / r.height});
+});
+setInterval(poll, 1000); poll();
+</script>
+</body>
+</html>

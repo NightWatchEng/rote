@@ -1,0 +1,246 @@
+{
+  "schema_version": "1.0",
+  "id": "member.get_savings_balance",
+  "version": "1.0.0",
+  "title": "Look up member \u003cmember id\u003e and read their current savings balance",
+  "description": "Look up member \u003cmember id\u003e and read their current savings balance",
+  "app": {
+    "profile": "meridian-core",
+    "profile_version": "1",
+    "surface": "web/accessibility-tree"
+  },
+  "inputs": [
+    {
+      "name": "member_id",
+      "type": "string",
+      "description": "the member id",
+      "pattern": "^[0-9]{1,10}$"
+    }
+  ],
+  "secrets": [
+    "operator_id",
+    "operator_password"
+  ],
+  "outputs": [
+    {
+      "name": "savings_balance",
+      "type": "money",
+      "description": "the savings balance",
+      "sensitive": true
+    }
+  ],
+  "outcomes": [
+    {
+      "code": "record_not_found",
+      "description": "No record matches the identifier that was searched for."
+    },
+    {
+      "code": "validation_error",
+      "description": "The application rejected the submitted values; the message says which rule failed."
+    },
+    {
+      "code": "permission_denied",
+      "description": "The operator profile is not permitted to view or act on this record."
+    }
+  ],
+  "entry": "/",
+  "steps": [
+    {
+      "id": "s1",
+      "intent": "Sign-on is required first, so enter the operator ID.",
+      "action": "type",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "label",
+            "role": "textbox",
+            "label": "Operator ID:",
+            "side": "left"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "textbox",
+            "index": 1
+          }
+        ],
+        "rationale": "the visible label \"Operator ID:\" sits left of it; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "value": "{{secrets.operator_id}}",
+      "risk": "reversible"
+    },
+    {
+      "id": "s2",
+      "intent": "Enter the operator password to finish signing on.",
+      "action": "type",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "label",
+            "role": "textbox",
+            "label": "Password:",
+            "side": "left"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "textbox",
+            "index": 2
+          }
+        ],
+        "rationale": "the visible label \"Password:\" sits left of it; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "value": "{{secrets.operator_password}}",
+      "risk": "reversible"
+    },
+    {
+      "id": "s3",
+      "intent": "Both credentials are filled in, so clicking Sign On will log in.",
+      "action": "click",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "name",
+            "role": "button",
+            "name": "Sign On"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "button",
+            "index": 1
+          }
+        ],
+        "rationale": "its own name is unique in the frame; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "risk": "reversible",
+      "expect": {
+        "frame": "main",
+        "path": "/home",
+        "title": "Workstation Home"
+      }
+    },
+    {
+      "id": "s4",
+      "intent": "Open the Member Inquiry function to look up the member.",
+      "action": "click",
+      "target": {
+        "frame": "nav",
+        "locators": [
+          {
+            "strategy": "name",
+            "role": "text",
+            "name": "Member Inquiry"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "text",
+            "index": 2
+          }
+        ],
+        "rationale": "its own name is unique in the frame; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "risk": "reversible",
+      "expect": {
+        "frame": "main",
+        "path": "/inquiry",
+        "title": "Member Inquiry"
+      }
+    },
+    {
+      "id": "s5",
+      "intent": "Enter the member number in the Member Number field so the search can run.",
+      "action": "type",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "label",
+            "role": "textbox",
+            "label": "Member Number:",
+            "side": "left"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "textbox",
+            "index": 1
+          }
+        ],
+        "rationale": "the visible label \"Member Number:\" sits left of it; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "value": "{{inputs.member_id}}",
+      "risk": "reversible"
+    },
+    {
+      "id": "s6",
+      "intent": "The member number is in the field, so clicking Search will open that member's record.",
+      "action": "click",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "name",
+            "role": "button",
+            "name": "Search"
+          },
+          {
+            "strategy": "ordinal",
+            "role": "button",
+            "index": 1
+          }
+        ],
+        "rationale": "its own name is unique in the frame; position in frame (fragile; last resort, reported as drift if used)"
+      },
+      "risk": "reversible",
+      "expect": {
+        "frame": "main",
+        "path": "/member",
+        "title": "Member Detail"
+      }
+    },
+    {
+      "id": "s7",
+      "intent": "Capture the current balance from the Regular Savings row of the member's share accounts table.",
+      "action": "extract",
+      "target": {
+        "frame": "main",
+        "locators": [
+          {
+            "strategy": "grid",
+            "role": "text",
+            "row": "Regular Savings",
+            "column": "Current Balance"
+          }
+        ],
+        "rationale": "table cell at a named row and column header; independent of row order and of the value itself"
+      },
+      "output": "savings_balance",
+      "risk": "read"
+    }
+  ],
+  "success": {
+    "all": [
+      {
+        "text": "Member Detail",
+        "frame": "main"
+      },
+      {
+        "text": "{{inputs.member_id}}",
+        "frame": "main"
+      }
+    ]
+  },
+  "risk": "reversible",
+  "approval": {
+    "status": "draft"
+  },
+  "provenance": {
+    "recorded_at": "2026-09-30T21:17:19Z",
+    "goal": "Look up member {{inputs.member_id}} and read their current savings balance",
+    "model": "claude-opus-5-5",
+    "backend": "claude-cli",
+    "run_id": "20260930T211643-discover-2abc08",
+    "recorded_on_tenant": "pinecrest",
+    "human_assisted": false
+  }
+}

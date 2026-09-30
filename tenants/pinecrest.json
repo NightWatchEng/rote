@@ -1,0 +1,10 @@
+{
+  "id": "pinecrest",
+  "name": "Pinecrest Community Credit Union",
+  "profile": "meridian-core",
+  "base_url": "http://127.0.0.1:8080",
+  "secrets": {
+    "operator_id": {"env": "PINECREST_OPERATOR_ID"},
+    "operator_password": {"env": "PINECREST_OPERATOR_PASSWORD"}
+  }
+}
