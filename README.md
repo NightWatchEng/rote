@@ -72,6 +72,8 @@ Both feed the same agent loop with the same prompt and schema; the evidence was 
 
 ## Demo path
 
+Screen recordings of exactly what follows: **[docs/demo.mp4](docs/demo.mp4)** (4 min: build, discovery, review, replays, injected faults, a hard failure, the handoff driven from the command line, the second tenant) and **[docs/console.mp4](docs/console.mp4)** (26 s: the same handoff done through the operator console).
+
 ```bash
 # 1. Discover: give the goal in plain language; the model drives the live application
 #    to accomplish it (about 40 s). The value named in the sentence becomes the
